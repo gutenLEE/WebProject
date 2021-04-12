@@ -27,30 +27,23 @@ public class MemberInsertTest {
     @Autowired MemberRepository memberRepository;
     @PersistenceContext EntityManager em;
 
-	
-	@Test
-	public void mybatis() {
-		Member vo = new Member();
-		
-		vo.setId("userA");
-		vo.setName("LEE");
-		vo.setPw("123");
-		vo.setContact("010");
-		vo.setEmail("naver");
-		memberService.join(vo);
-	}
     @Test
     public void 회원가입() throws Exception {
 
         //given
         Member member = new Member();
         member.setName("kim");
-
+        member.setId("wow");
+        member.setPw("123");
+        member.setContact("010");
+        member.setEmail("naver");
+		
         //when
         String savedId = memberService.join(member);
 
         //then
-        em.flush(); // insert쿼리 진행행
+        em.flush(); // insert쿼리 진행
+        
         assertEquals(member, memberRepository.findOne(savedId));
     }
 

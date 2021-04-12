@@ -14,7 +14,7 @@ public class MemberRepository {
     private EntityManager em;
 
     public void save(Member member) {
-        em.persist(member);
+        em.merge(member);
     }
 
     public Member findOne(String id) {

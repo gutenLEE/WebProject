@@ -1,5 +1,8 @@
 package com.spring.imfind.service;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
@@ -16,6 +19,8 @@ public class MemberService {
 
 
 	 private final MemberRepository memberRepository;
+	 @PersistenceContext private EntityManager em;
+
 	
 	 @Autowired // constructor injection. 생성 시점에 주입하므로 runtime 도중 바뀔 위험이 없다.
 	 public MemberService(MemberRepository memberRepository) {
